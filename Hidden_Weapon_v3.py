@@ -6,7 +6,7 @@ import numpy as np
 solver = gambit.nash.ExternalEnumPureSolver()
 results = []
 
-with open("hidden_weapon_input.csv") as csvfile:
+with open("hidden_weapon_input3.csv") as csvfile:
 	reader = csv.reader(csvfile)
 	i = 1
 	for row in reader:
