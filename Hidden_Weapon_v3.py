@@ -169,7 +169,7 @@ with open("hidden_weapon_input3.csv") as csvfile:
 					print(el[game.players["Blue"]])
 					print(el.payoff(game.players["Blue"]))
 					results.append({"Signal Cost":blue_signal_cost,
-						"Weapon Value":blue_change_weapon,
+						"Weapon Value":blue_chance_weapon,
 						"Prob Red Develops":float(el[game.players["Red"].infosets[0].actions[1]])# + el[game.players["Red"].infosets[1].actions[0]] 
 						})
 					found = True
