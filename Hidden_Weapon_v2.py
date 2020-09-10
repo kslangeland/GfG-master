@@ -116,6 +116,7 @@ with open("hidden_weapon_input.csv") as csvfile:
 					print(el.payoff(game.players["Blue"]))
 					results.append({"Weapon Value": blue_change_weapon,
 						"Blue Signal Cost":blue_signal_cost,
+						"Probability Blue with Weapon Bluffs":float(el[game.players["Blue"].infosets[0].actions[0]]),
 						"Prob Red Accepts Given Blue Signals":float(el[game.players["Red"].infosets[0].actions[1]]) 
 						})
 					found = True
