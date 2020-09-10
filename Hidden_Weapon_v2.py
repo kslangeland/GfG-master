@@ -28,35 +28,35 @@ with open("hidden_weapon_input.csv") as csvfile:
 			Red = game.players.add("Red")
 
 			weapon_signal_accept = game.outcomes.add("Weapon Signal Accept")
-			weapon_signal_accept[0] = blue_start + blue_change_weapon - blue_signal_cost #- red_start
+			weapon_signal_accept[0] = blue_start + blue_change_weapon - blue_signal_cost - red_start
 			weapon_signal_accept[1] = red_start - blue_start - blue_change_weapon
 
 			weapon_signal_develop = game.outcomes.add("Weapon Signal Develop")
-			weapon_signal_develop[0] = blue_start - blue_signal_cost #- red_start
+			weapon_signal_develop[0] = blue_start - blue_signal_cost - red_start
 			weapon_signal_develop[1] = red_start - blue_start - red_dev_cost
 
 			weapon_nosignal_accept = game.outcomes.add("Weapon No Signal Accept")
-			weapon_nosignal_accept[0] = blue_start + blue_change_weapon #- red_start
+			weapon_nosignal_accept[0] = blue_start + blue_change_weapon - red_start
 			weapon_nosignal_accept[1] = red_start - blue_start - blue_change_weapon
 
 			weapon_nosignal_develop = game.outcomes.add("Weapon No Signal Develop")
-			weapon_nosignal_develop[0] = blue_start #- red_start
+			weapon_nosignal_develop[0] = blue_start - red_start
 			weapon_nosignal_develop[1] = red_start - blue_start - red_dev_cost
 
 			noweapon_signal_accept = game.outcomes.add("No Weapon Signal Accept")
-			noweapon_signal_accept[0] = blue_start - (blue_signal_cost / 2)  + blue_change_noweapon #- red_start
+			noweapon_signal_accept[0] = blue_start - (blue_signal_cost / 2)  + blue_change_noweapon - red_start
 			noweapon_signal_accept[1] = red_start - blue_start
 
 			noweapon_signal_develop = game.outcomes.add("No Weapon Signal Develop")
-			noweapon_signal_develop[0] = blue_start - (blue_signal_cost / 2) #- red_start
+			noweapon_signal_develop[0] = blue_start - (blue_signal_cost / 2) - red_start
 			noweapon_signal_develop[1] = red_start - blue_start - red_dev_cost
 
 			noweapon_nosignal_accept = game.outcomes.add("No Weapon No Signal Accept")
-			noweapon_nosignal_accept[0] = blue_start + blue_change_noweapon #- red_start
+			noweapon_nosignal_accept[0] = blue_start + blue_change_noweapon - red_start
 			noweapon_nosignal_accept[1] = red_start - blue_start
 
 			noweapon_nosignal_develop = game.outcomes.add("No Weapon No Signal Develop")
-			noweapon_nosignal_develop[0] = blue_start #- red_start
+			noweapon_nosignal_develop[0] = blue_start - red_start
 			noweapon_nosignal_develop[1] = red_start - blue_start - red_dev_cost
 
 			move = game.root.append_move(game.players.chance, 2)
@@ -117,7 +117,7 @@ with open("hidden_weapon_input.csv") as csvfile:
 					results.append({"Weapon Value": blue_change_weapon,
 						"Blue Signal Cost":blue_signal_cost,
 						"Probability Blue with Weapon Bluffs":float(el[game.players["Blue"].infosets[0].actions[0]]),
-						"Prob Red Accepts Given Blue Signals":float(el[game.players["Red"].infosets[0].actions[1]]) 
+						"Prob Red Develops Given Blue Signals":float(el[game.players["Red"].infosets[0].actions[1]]) 
 						})
 					found = True
 				elif found:
