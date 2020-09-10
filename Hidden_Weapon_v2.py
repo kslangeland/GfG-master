@@ -108,7 +108,7 @@ with open("hidden_weapon_input.csv") as csvfile:
 			print(blue_signal_cost)
 			for el in solution:
 				found = False
-				if not found and el[game.players["Blue"].infosets[0].actions[0]] != el[game.players["Blue"].infosets[1].actions[0]]:
+				if not found: #and el[game.players["Blue"].infosets[0].actions[0]] != el[game.players["Blue"].infosets[1].actions[0]]:
 					print(el)
 					print(el[game.players["Red"]])
 					print(el.payoff(game.players["Red"]))
@@ -116,7 +116,7 @@ with open("hidden_weapon_input.csv") as csvfile:
 					print(el.payoff(game.players["Blue"]))
 					results.append({"Weapon Value": blue_change_weapon,
 						"Blue Signal Cost":blue_signal_cost,
-						"Prob Blue Signals Given Weapon":float(el[game.players["Red"].infosets[0].actions[1]]) 
+						"Prob Red Accepts Given Blue Signals":float(el[game.players["Red"].infosets[0].actions[1]]) 
 						})
 					found = True
 				elif found:
