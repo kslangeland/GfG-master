@@ -33,20 +33,20 @@ with open("hidden_weapon_input3.csv") as csvfile:
 			Red = game.players.add("Red")
 
 			weapon_signal_accept = game.outcomes.add("Weapon Signal Accept")
-			weapon_signal_accept[0] = blue_start + blue_change_weapon - blue_signal_cost/ 2 - red_start
-			weapon_signal_accept[1] = red_start - blue_start - blue_change_weapon
+			weapon_signal_accept[0] = blue_start 
+			weapon_signal_accept[1] = red_start 
 
 			weapon_nosignal_accept = game.outcomes.add("Weapon No Signal Accept")
-			weapon_nosignal_accept[0] = blue_start + blue_change_weapon - red_start
-			weapon_nosignal_accept[1] = red_start - blue_start - blue_change_weapon
+			weapon_nosignal_accept[0] = blue_start 
+			weapon_nosignal_accept[1] = red_start
 
 			noweapon_signal_accept = game.outcomes.add("No Weapon Signal Accept")
-			noweapon_signal_accept[0] = blue_start - (blue_signal_cost) - red_start + blue_change_noweapon
-			noweapon_signal_accept[1] = red_start - blue_start
+			noweapon_signal_accept[0] = blue_start 
+			noweapon_signal_accept[1] = red_start 
 
 			noweapon_nosignal_accept = game.outcomes.add("No Weapon No Signal Accept")
-			noweapon_nosignal_accept[0] = blue_start - red_start + blue_change_noweapon
-			noweapon_nosignal_accept[1] = red_start - blue_start
+			noweapon_nosignal_accept[0] = blue_start 
+			noweapon_nosignal_accept[1] = red_start 
 
 			blue_wins_weapon_signal = game.outcomes.add("Blue Wins Weapon Signal")
 			blue_wins_weapon_signal[0] = win_value - blue_signal_cost/ 2 - conflict_cost
@@ -95,7 +95,7 @@ with open("hidden_weapon_input3.csv") as csvfile:
 			#no weapon branch
 			nmove = game.root.children[1].append_move(Blue, 2)
 			nmove.label = "send signal?"
-			nmove.actions[0].label = "signl"
+			nmove.actions[0].label = "signal"
 			nmove.actions[1].label = "no signal"
 
 			#sees signal
@@ -158,11 +158,11 @@ with open("hidden_weapon_input3.csv") as csvfile:
 			#solution = solver.solve(game)
 			solution = gambit.nash.lcp_solve(game)
 			#print(len(solution))
-			print(blue_change_weapon)
+			print(blue_chance_weapon)
 			print(blue_signal_cost)
 			for el in solution:
 				found = False
-				if not found and el[game.players["Blue"].infosets[0].actions[0]] != el[game.players["Blue"].infosets[1].actions[0]]:
+				if not found #and el[game.players["Blue"].infosets[0].actions[0]] != el[game.players["Blue"].infosets[1].actions[0]]:
 					print(el)
 					print(el[game.players["Red"]])
 					print(el.payoff(game.players["Red"]))
