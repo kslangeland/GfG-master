@@ -108,7 +108,7 @@ with open("hidden_weapon_input.csv") as csvfile:
 			print(blue_signal_cost)
 			for el in solution:
 				found = False
-				if not found: #and el[game.players["Blue"].infosets[0].actions[0]] != el[game.players["Blue"].infosets[1].actions[0]]:
+				if not found and el[game.players["Blue"].infosets[0].actions[0]] != el[game.players["Blue"].infosets[1].actions[0]]:
 					print(el)
 					print(el[game.players["Red"]])
 					print(el.payoff(game.players["Red"]))
