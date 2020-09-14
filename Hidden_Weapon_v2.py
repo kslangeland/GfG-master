@@ -133,4 +133,4 @@ with open("hidden_weapon_input.csv") as csvfile:
 			headers = row
 		i = i + 1
 df = pd.DataFrame(results)
-df.to_csv("results.csv")
+df.to_csv("results_game1.csv")
