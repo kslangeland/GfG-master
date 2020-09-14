@@ -186,4 +186,4 @@ with open("hidden_weapon_input3.csv") as csvfile:
 
 df = pd.DataFrame(results)
 print(df)
-df.to_csv("results.csv")
+df.to_csv("results_game2.csv")
